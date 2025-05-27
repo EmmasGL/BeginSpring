@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.curso.springboot.spring_boot_web.models.Usuario;
+
 @Controller
 @RequestMapping("/my-app")  // fuera de nuestro controlador sirve para configurar una ruta base que todos los handlers tendra 
 public class HomeControllers {
@@ -32,5 +34,16 @@ public class HomeControllers {
 		//return "index"; // model, ModelMap, Map
 		mv.setViewName("index");
 		return mv;
+	}
+	
+	
+	@RequestMapping("/perfil")
+	public String perfil(Model model) { 
+		Usuario usuario = new Usuario();
+		usuario.setNombre("Emmas");
+		usuario.setApellido("Gomez");
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("titulo", "Perfil del usuario ".concat(usuario.getNombre()));
+		return "perfil";
 	}
 }
