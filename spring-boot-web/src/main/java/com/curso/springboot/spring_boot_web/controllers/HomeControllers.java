@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/my-app")  // fuera de nuestro controlador sirve para configurar una ruta base que todos los handlers tendra 
 public class HomeControllers {
 
 	//El metodo get en esta notacion esta explícito, podemos en este ejemplo omitir el get o colocar otro metodo
