@@ -1,6 +1,7 @@
 package com.curso.springboot.spring_boot_web.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -8,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.curso.springboot.spring_boot_web.models.Usuario;
 
@@ -51,12 +54,22 @@ public class HomeControllers {
 	
 	@GetMapping("/listar")
 	public String listar(Model model) {
-		List<Usuario> usuarios = new ArrayList<>();
-		usuarios.add(new Usuario("Emmas","Gomez","emma@correo.com"));
+		//List<Usuario> usuarios = new ArrayList<>();
+		/*usuarios.add(new Usuario("Emmas","Gomez","emma@correo.com"));
 		usuarios.add(new Usuario("Diego","Valencia","diego@correo.com"));
 		usuarios.add(new Usuario("Crispin","Gomez","crispin@correo.com"));
+		model.addAttribute("usuarios", usuarios);*/
 		model.addAttribute("titulo", "Listado de usuarios");
-		model.addAttribute("usuarios", usuarios);
 		return "listar";
+	}
+	
+	
+	//este modelo se compartira con todos los handlers(metodos) que tenemos declarados en el controlador 
+	@ModelAttribute("usuarios")
+	public List<Usuario> poblarUsuarios(){
+		List<Usuario> usuarios = Arrays.asList(new Usuario("Emmas","Gomez","emma@correo.com"),
+				new Usuario("Diego","Valencia","diego@correo.com"),
+				new Usuario("Crispin","Gomez","crispin@correo.com"));
+;		return usuarios;
 	}
 }
