@@ -1,5 +1,7 @@
 package com.curso.springboot.spring_boot_web.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -36,14 +38,25 @@ public class HomeControllers {
 		return mv;
 	}
 	
-	
 	@RequestMapping("/perfil")
 	public String perfil(Model model) { 
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Emmas");
 		usuario.setApellido("Gomez");
+		usuario.setEmail("emmas@gmail.com");
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("titulo", "Perfil del usuario ".concat(usuario.getNombre()));
 		return "perfil";
+	}
+	
+	@GetMapping("/listar")
+	public String listar(Model model) {
+		List<Usuario> usuarios = new ArrayList<>();
+		usuarios.add(new Usuario("Emmas","Gomez","emma@correo.com"));
+		usuarios.add(new Usuario("Diego","Valencia","diego@correo.com"));
+		usuarios.add(new Usuario("Crispin","Gomez","crispin@correo.com"));
+		model.addAttribute("titulo", "Listado de usuarios");
+		model.addAttribute("usuarios", usuarios);
+		return "listar";
 	}
 }
