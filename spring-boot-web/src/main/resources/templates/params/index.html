@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Enviar parametros en el Request</title>
+</head>
+<body>
+
+	<h1>Enviar parametros en el Request</h1>
+	<ul>
+		<li>
+			<!-- De esta manera se puede usar url en thymeleaf -->
+			<a th:href="@{/params/string(texto='hola emmas')}">/params/string?texto=hola emmas</a>
+		</li>
+		<li>
+			<a th:href="@{/params/string(texto='hola Diego')}">/params/string?texto=hola diego</a>
+		</li>
+		<li>
+			<a th:href="@{/params/mix-params(saludo='Como estas Emmas', numero=7)}">/params/mix-params?saludo=como estas emmas&numero=7</a>
+		</li>
+		<li>
+			<a th:href="@{/params/mix-params-servlet(saludo='Como estas Emmas', numero=7)}">/params/mix-params-servlet?saludo=como estas emmas&numero=7</a>
+		</li>
+	</ul>
+</body>
+</html>
